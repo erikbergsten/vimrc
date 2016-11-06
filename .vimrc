@@ -48,14 +48,3 @@ iabbrev @@ erikbergsten94@gmail.com
 
 source .vim/clojure.vim
 
-function! SomeFun(arg)
-python << endpython
-import vim
-arg = vim.eval("a:arg")
-(row, col) = vim.current.window.cursor
-vim.current.buffer[row-1] = "huhu"
-vim.command("return 1")
-endpython
-endfunction
-
-onoremap <leader>x :call SomeFun("smurf it")<CR><esc>
