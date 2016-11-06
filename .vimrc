@@ -46,5 +46,4 @@ iabbrev minom Erik Bergsten
 iabbrev @@ erikbergsten94@gmail.com
 
 
-source .vim/clojure.vim
-
+source ~/.vim/clojure.vim
