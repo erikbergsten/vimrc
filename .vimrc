@@ -46,12 +46,7 @@ iabbrev minom Erik Bergsten
 iabbrev @@ erikbergsten94@gmail.com
 
 
-"apply clojure syntax highlighting to .cljx files
-augroup cljx_files
-  autocmd!
-  autocmd BufNewFile,BufRead *.cljx set syntax=clojure
-augroup END
-
+source .vim/clojure.vim
 
 function! SomeFun(arg)
 python << endpython
