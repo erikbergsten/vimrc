@@ -7,6 +7,7 @@ set softtabstop=2
 set expandtab
 set colorcolumn=81
 set ruler
+set backspace=start,eol,indent
 colorscheme elflord
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
