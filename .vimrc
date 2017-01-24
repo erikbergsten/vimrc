@@ -48,3 +48,4 @@ iabbrev @@ erikbergsten94@gmail.com
 
 source ~/.vim/clojure.vim
 source ~/.vim/c.vim
+source ~/.vim/agda.vim
