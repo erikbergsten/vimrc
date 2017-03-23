@@ -11,6 +11,8 @@ iabbrev Lcontradiction <c-v>u22A5
 iabbrev Lexists <c-v>u2203
 iabbrev Lturnstyle <c-v>u22A2
 iabbrev Ldturnstyle <c-v>u22A8
+iabbrev Lbox <c-v>u25A2
+iabbrev Ldiamond <c-v>u25C7
 
 "signing info
 iabbrev minom Erik Bergsten
