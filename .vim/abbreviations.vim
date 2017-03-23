@@ -1,10 +1,10 @@
 
 
 "abbrevs for logic unicode symbols
-iabbrev Lnot <c-v>u00ACiabbrev Lnot <c-v>u00AC
+iabbrev Lnot <c-v>u00AC
 iabbrev Limplies <c-v>u2283
-iabbrev Land <c-v>u2227
-iabbrev Lor <c-v>u2228
+iabbrev Lconj <c-v>u2227
+iabbrev Ldisj <c-v>u2228
 iabbrev Lforall <c-v>u2200
 iabbrev Ltautology <c-v>u22A4
 iabbrev Lcontradiction <c-v>u22A5
