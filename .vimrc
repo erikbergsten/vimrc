@@ -43,9 +43,7 @@ onoremap <leader>n( :<c-u>normal! f(vi(<cr>
 onoremap <leader>n{ :<c-u>normal! f{vi{<cr>
 onoremap <leader>n[ :<c-u>normal! f[vi[<cr>
 
-iabbrev minom Erik Bergsten
-iabbrev @@ erikbergsten94@gmail.com
-
 source ~/.vim/clojure.vim
 source ~/.vim/c.vim
 source ~/.vim/agda.vim
+source ~/.vim/abbreviations.vim
