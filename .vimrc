@@ -7,6 +7,7 @@ set softtabstop=2
 set expandtab
 set colorcolumn=81
 set ruler
+set scrolloff=5
 set backspace=start,eol,indent
 colorscheme elflord
 

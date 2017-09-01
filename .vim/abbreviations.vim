@@ -13,6 +13,7 @@ iabbrev Lturnstyle <c-v>u22A2
 iabbrev Ldturnstyle <c-v>u22A8
 iabbrev Lbox <c-v>u25A2
 iabbrev Ldiamond <c-v>u25C7
+iabbrev Ltripeq <c-v>u2261
 
 "signing info
 iabbrev minom Erik Bergsten
@@ -70,3 +71,6 @@ iabbrev Upsi <c-v>u03c8
 iabbrev UPsi <c-v>u03a8
 iabbrev Uomega <c-v>u03c9
 iabbrev UOmega <c-v>u03a9
+
+iabbrev Unat <c-v>u2115
+iabbrev Ucomp <c-v>u2102
