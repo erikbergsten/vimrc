@@ -14,7 +14,10 @@ endpython
 endfunction
 
 
+
 augroup c_files
   autocmd!
   autocmd BufNewFile,BufRead *.c,*.h command! -nargs=* Guard call Guard( '<args>' )
+  autocmd FileType c :iabbrev <buffer> incl #include
 augroup END
+
