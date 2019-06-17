@@ -17,6 +17,12 @@ syntax on
 filetype plugin indent on
 set splitright
 set splitbelow
+
+" tab shorthand
+cnoremap tb tabnew
+nnoremap <C-t>l :tabn<cr>
+nnoremap <C-t>h :tabp<cr>
+
 let mapleader = "-"
 
 "fix highlihting
