@@ -50,6 +50,10 @@ onoremap <leader>n( :<c-u>normal! f(vi(<cr>
 onoremap <leader>n{ :<c-u>normal! f{vi{<cr>
 onoremap <leader>n[ :<c-u>normal! f[vi[<cr>
 
+"for xclip clipboard usage when vim * and + registers arent available
+vnoremap <leader>y :w !xclip -sel c -i<cr><cr>
+nnoremap <leader>p :r !xclip -sel c -o<cr>
+
 source ~/.vim/clojure.vim
 source ~/.vim/c.vim
 source ~/.vim/agda.vim
