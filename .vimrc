@@ -27,6 +27,7 @@ let mapleader = "-"
 
 "fix highlihting
 nnoremap <silent> <C-l> :let @/ = ""<CR><C-l>
+nnoremap <silent> <C-n> :syn sync fromstart<CR>
 
 "uppercase current word
 inoremap <c-u> <esc>viwUea

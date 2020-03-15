@@ -14,12 +14,22 @@ iabbrev Ldturnstyle <c-v>u22A8
 iabbrev Lbox <c-v>u25A2
 iabbrev Ldiamond <c-v>u25C7
 iabbrev Ltripeq <c-v>u2261
+iabbrev Lmember <c-v>u2208
+iabbrev Lempty <c-v>u2205
+iabbrev LLbracket <c-v>u27E6
+iabbrev LRbracket <c-v>u27E7
+iabbrev Larrow <c-v>u2192
+iabbrev LArrow <c-v>u21D2
+iabbrev Llbrack <c-v>u27E6
+iabbrev Lrbrack <c-v>u27E7
+iabbrev Luplbrack <c-v>u2E22
+iabbrev Luprbrack <c-v>u2E23
+iabbrev Levals <c-v>u21E9
 
 "signing info
 iabbrev minom Erik Bergsten
 iabbrev @@ erikbergsten94@gmail.com
-iabbrev <expr> dateplz strftime("%a %d %b %Y")
-
+iabbrev <expr> dateplz date!
 
 "greek unicode
 
@@ -74,3 +84,4 @@ iabbrev UOmega <c-v>u03a9
 
 iabbrev Unat <c-v>u2115
 iabbrev Ucomp <c-v>u2102
+iabbrev Uint <c-v>u2124
