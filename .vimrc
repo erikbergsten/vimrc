@@ -22,6 +22,7 @@ set splitbelow
 cnoremap tb tabnew
 nnoremap <C-t>l :tabn<cr>
 nnoremap <C-t>h :tabp<cr>
+nnoremap <C-t>n :tabnew<cr>
 
 let mapleader = "-"
 
@@ -35,7 +36,6 @@ inoremap <c-u> <esc>viwUea
 "edit and reload vimrc
 nnoremap <leader>ev :split ~/.vimrc<cr>G
 nnoremap <leader>sv :source ~/.vimrc<cr>
-
 "singe or doubleqoute a word
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
