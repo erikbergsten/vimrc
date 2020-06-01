@@ -18,6 +18,9 @@ filetype plugin indent on
 set splitright
 set splitbelow
 
+" move in wrapped line one step at a time, non-wrapped lines function normally
+nnoremap j gj
+nnoremap k gk
 " tab shorthand
 cnoremap tb tabnew
 nnoremap <C-t>l :tabn<cr>
