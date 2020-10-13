@@ -4,6 +4,7 @@ set autoindent
 set number
 set shiftwidth=2
 set softtabstop=2
+set tabstop=4
 set expandtab
 set colorcolumn=81
 set ruler
