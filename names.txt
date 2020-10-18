@@ -1,0 +1,100 @@
+Everest
+Kangchenjunga
+Lhotse
+Makalu
+Cho Oyu
+Dhaulagiri
+Manaslu
+Nanga Parbat
+Annapurna
+Gasherbrum
+Shishapangma
+Gyachung Kang
+Himalchuli
+Distaghil Sar
+Ngadi Chuli
+Nuptse
+Khunyang CHhish
+Nanda Devi
+Chomo Lonzo
+Batura Sar
+Caspian
+Superior
+Victoria
+Huron
+Michigan
+Tanganyika
+Baikal
+Great Bear
+Malawi
+Erie
+Winnipeg
+Ontario
+Ladoga
+Balkhash
+Bangweulu
+Vostok
+Onega
+Titicaca
+Nicaragua
+Vanern
+Nile
+Amazon
+Yangtze
+Mississippi
+Yenisei
+Yellow
+Ob
+Rio de la Plata
+Congo
+Amur
+Lena
+Mekong
+Mackenzie
+Niger
+Brahmaputra
+Murray
+Tocantins
+Volga
+Indus
+Shatt al-Arab
+Tokyo
+Delhi
+Shanghai
+Sao Paulo
+Mexico
+Cairo
+Mumbai
+Beijing
+Dhaka
+Osaka
+New York
+Karachi
+Buenos Aires
+Chongqing
+Istanbul
+Kolkata
+Manila
+Lagos
+Rio de Janeiro
+Tianjin
+Kinshasa
+Guangzhou
+Los Angeles
+Moscow
+Shenzhen
+Lahore
+Bangalore
+Paris
+Bogota
+Jakarta
+Chennai
+Lima
+Bangkok
+Seoul
+Nagoya
+Hyderabad
+London
+Tehran
+Stockholm
+Gothenburg
