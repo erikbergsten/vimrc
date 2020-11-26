@@ -63,3 +63,6 @@ source ~/.vim/clojure.vim
 source ~/.vim/c.vim
 source ~/.vim/agda.vim
 source ~/.vim/abbreviations.vim
+
+autocmd Filetype java setlocal ts=4 sw=4 sts=4 expandtab
+
