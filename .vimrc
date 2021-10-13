@@ -68,3 +68,7 @@ autocmd Filetype java setlocal ts=4 sw=4 sts=4 expandtab
 autocmd Filetype erlang setlocal ts=4 sw=4 sts=4 expandtab
 autocmd BufNewFile,BufRead *.tex,*.txt set wrap linebreak
 
+augroup typescriptx_files
+  autocmd!
+  autocmd BufNewFile,BufRead *.tsx set syntax=typescript
+augroup END
