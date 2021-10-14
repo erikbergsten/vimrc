@@ -1,0 +1,76 @@
+#!/usr/bin/python3
+import yaml
+import json
+import sys
+import argparse
+
+def yaml_loader(content):
+    return yaml.load(content, Loader=yaml.CLoader)
+
+loaders = {
+    'yaml': yaml_loader,
+    'y': yaml_loader,
+    'json': json.loads,
+    'j': json.loads
+}
+
+def yaml_dumper(content):
+    return yaml.dump(content, Dumper=yaml.CDumper)
+
+dumpers = {
+    'yaml': yaml_dumper,
+    'y': yaml_dumper,
+    'json-single': json.dumps,
+    'js': json.dumps,
+    'json': lambda content: json.dumps(content, indent=4, sort_keys=True),
+    'j': lambda content: json.dumps(content, indent=4, sort_keys=True)
+}
+
+def main():
+    parser = argparse.ArgumentParser(description="Convert and format JSON and YAML")
+    parser.add_argument('input', default=None, nargs='?', help="Input file.")
+    parser.add_argument('-o', dest="output", default=None, help="Output file.")
+    parser.add_argument('-l', dest='loader', help="Which format to load, <yaml|json>", default=None)
+    parser.add_argument('-d', dest='dumper', help="Which format to dump, <yaml|json>", default=None)
+
+    args = parser.parse_args()
+
+    loaderName = "none"
+    dumperName = "none"
+
+    try:
+        loaderName = args.loader or args.input.split(".")[-1]
+        loader = loaders[loaderName]
+    except:
+        print("No loader for \"{}\", try -l <{}>".format(loaderName, \
+              "|".join(list(loaders.keys()))))
+        sys.exit(0)
+
+    try:
+        dumperName = args.dumper or args.output.split(".")[-1]
+        dumper = dumpers[ dumperName ]
+    except:
+        print("No dumper for \"{}\", try -d <{}>".format(dumperName, \
+              "|".join(list(dumpers.keys()))))
+        sys.exit(0)
+
+    outfile = sys.stdout
+    if args.output:
+        outfile = open(args.output, 'w')
+
+    infile = sys.stdin
+    if args.input:
+        infile = open(args.input, 'r')
+
+    content =""
+    try:
+        content = infile.read(32768)
+    except:
+        print("No such file:", args.input)
+
+
+    outfile.write(dumper(loader(content)))
+
+
+if __name__ == '__main__':
+    main()

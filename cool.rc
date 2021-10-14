@@ -1,0 +1,3 @@
+jedy() {
+  cat "$1" | jaml -l j -d y | vipe | jaml -l y -d j | sponge "$1"
+}
