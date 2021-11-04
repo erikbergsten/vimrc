@@ -1,0 +1,23 @@
+{
+  "name": "ezA5",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Make the world go 'round",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "input"
+  ],
+  "input_components": [
+    {
+      "name": "ezA5",
+      "type": "ime",
+      "id": "ezA5",
+      "description": "Make the world go 'round",
+      "language": "sv",
+      "layouts": ["se(dvorak)"]
+    }
+  ]
+}
+
