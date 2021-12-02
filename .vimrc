@@ -22,6 +22,11 @@ set splitbelow
 " move in wrapped line one step at a time, non-wrapped lines function normally
 nnoremap j gj
 nnoremap k gk
+
+" move past wrapped lines (like normal vim settings) using leader-j or k
+nnoremap <leader>j j
+nnoremap <leader>k k
+
 " tab shorthand
 cnoremap tb tabnew
 nnoremap <C-t>l :tabn<cr>
