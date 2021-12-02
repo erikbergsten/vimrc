@@ -37,6 +37,8 @@ nnoremap <silent> <C-n> :syn sync fromstart<CR>
 "uppercase current word
 inoremap <c-u> <esc>viwUea
 
+"indent at last whitespace before column 81
+nnoremap <c-n> 81\|Bhs<enter><esc>
 "edit and reload vimrc
 nnoremap <leader>ev :split ~/.vimrc<cr>G
 nnoremap <leader>sv :source ~/.vimrc<cr>
