@@ -66,6 +66,8 @@ onoremap <leader>n[ :<c-u>normal! f[vi[<cr>
 vnoremap <leader>y :w !xclip -sel c -i<cr><cr>
 nnoremap <leader>p :r !xclip -sel c -o<cr>
 
+iabbrev somerandom <C-r>=system('openssl rand -base64 21')[:-2]<CR>
+
 source ~/.vim/clojure.vim
 source ~/.vim/c.vim
 source ~/.vim/agda.vim
@@ -78,4 +80,13 @@ autocmd BufNewFile,BufRead *.tex,*.txt set wrap linebreak
 augroup typescriptx_files
   autocmd!
   autocmd BufNewFile,BufRead *.tsx set syntax=typescript
+augroup END
+
+augroup json_files
+  autocmd!
+  autocmd BufNewFile,BufRead *.json set syntax=yaml
+augroup END
+augroup gotmpl
+  autocmd!
+  autocmd BufNewFile,BufRead *.gotmpl set syntax=yaml
 augroup END
