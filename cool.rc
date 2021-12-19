@@ -1,0 +1,6 @@
+PS1='[\W] '
+
+alias p='echo $PWD'
+alias l='ls -la'
+alias r='source ~/.bashrc'
+

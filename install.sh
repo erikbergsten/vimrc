@@ -7,3 +7,5 @@ ln -sf $PWD/.vim ~/.vim
 
 rm ~/.tmux.conf
 ln -sf $PWD/.tmux.conf ~/.tmux.conf
+
+echo "source $PWD/cool.rc" >> ~/.bashrc
