@@ -91,3 +91,6 @@ augroup gotmpl
   autocmd!
   autocmd BufNewFile,BufRead *.gotmpl set syntax=yaml
 augroup END
+
+let g:ftplugin_sql_omni_key = '<C-j>'
+
