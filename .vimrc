@@ -67,6 +67,8 @@ onoremap <leader>n[ :<c-u>normal! f[vi[<cr>
 vnoremap <leader>y :w !xclip -sel c -i<cr><cr>
 nnoremap <leader>p :r !xclip -sel c -o<cr>
 
+vnoremap @ :normal @
+
 iabbrev somerandom <C-r>=system('openssl rand -base64 21')[:-2]<CR>
 
 source ~/.vim/clojure.vim
