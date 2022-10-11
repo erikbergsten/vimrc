@@ -52,3 +52,12 @@ kcat() {
   podman run -it --rm --network host confluentinc/cp-kafkacat kafkacat $@
 }
 
+azr_push() {
+  REGISTRY=$(echo $1 | cut -d '.' -f1)
+  TOKEN=$(az acr login \
+    --name $REGISTRY \
+    --expose-token \
+    -o tsv \
+    --query accessToken)
+  podman push $1 --creds 00000000-0000-0000-0000-000000000000:$TOKEN
+}
