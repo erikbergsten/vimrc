@@ -4,7 +4,7 @@ alias p='echo $PWD'
 alias l='ls -la'
 alias r='source ~/.bashrc'
 
-complete -o default -F __start_kubectl k
+complete -o default -F __start_kubectl kctl
 
 alias xclippy='xclip -o -sel clipboard'
 alias kctl='kubectl'
