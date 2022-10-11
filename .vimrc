@@ -11,7 +11,6 @@ set ruler
 set scrolloff=5
 set backspace=start,eol,indent
 set numberwidth=5
-colorscheme elflord
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
