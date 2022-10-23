@@ -1,12 +1,10 @@
 PS1='\W § '
 
-alias p='echo $PWD'
 alias l='ls -la'
 alias r='source ~/.bashrc'
 
 complete -o default -F __start_kubectl kctl
 
-alias xclippy='xclip -o -sel clipboard'
 alias kctl='kubectl'
 alias watch='watch '
 alias watch10='watch -n10 '
@@ -49,9 +47,23 @@ kraft() {
 }
 
 kcat() {
-  podman run -it --rm --network host confluentinc/cp-kafkacat kafkacat $@
+  podman run -it --rm --network host -v `pwd`:/home/appuser:z confluentinc/cp-kafkacat kafkacat $@
 }
 
+ksql-server() {
+  podman run --network host --name ksql-server --rm -it \
+    -e KSQL_LISTENERS=http://0.0.0.0:8088 \
+    -e KSQL_BOOTSTRAP_SERVERS=localhost:9092 \
+    -e KSQL_KSQL_LOGGING_PROCCESSING_STREAM_AUTO_CREATE="true" \
+    -e KSQL_KSQL_LOGGING_PROCCESSING_TOPIC_AUTO_CREATE="true" \
+    confluentinc/ksqldb-server:0.28.2
+}
+
+ksql-cli() {
+  podman run --network host --name ksql-cli --rm -it \
+    --entrypoint ksql \
+    confluentinc/ksqldb-cli:0.28.2
+}
 azr_push() {
   REGISTRY=$(echo $1 | cut -d '.' -f1)
   TOKEN=$(az acr login \
