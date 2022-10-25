@@ -17,7 +17,7 @@ export EDITOR=nvim
 NODE_IMAGE=node:18.10.0-alpine3.15
 
 nodejs () {
-  podman run -it --name node --rm -v `pwd`:/app:z -w /app --network host --entrypoint $1 $NODE_IMAGE ${@:2}
+  podman run -it --rm -v `pwd`:/app:z -w /app --network host --entrypoint $1 $NODE_IMAGE ${@:2}
 }
 
 deactivate () {
