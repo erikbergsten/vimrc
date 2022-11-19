@@ -4,6 +4,7 @@ alias l='ls -la'
 alias r='source ~/.bashrc'
 
 complete -o default -F __start_kubectl kctl
+export DOCKER_HOST=unix:///run/user/${UID}/podman/podman.sock
 
 alias kctl='kubectl'
 alias watch='watch '
@@ -32,6 +33,7 @@ alias node='nodejs node'
 alias npx='nodejs npx'
 
 KAFKA_IMAGE=bitnami/kafka:latest
+
 kraft() {
   podman run --network host --name kraft --rm -d \
     -e KAFKA_ENABLE_KRAFT=yes \
@@ -43,6 +45,7 @@ kraft() {
     -e KAFKA_BROKER_ID=1 \
     -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@127.0.0.1:9093 \
     -e ALLOW_PLAINTEXT_LISTENER=yes \
+    -e KAFKA_CFG_GROUP_MIN_SESSION_TIMEOUT_MS=250 \
      $KAFKA_IMAGE
 }
 
@@ -64,6 +67,7 @@ ksql-cli() {
     --entrypoint ksql \
     confluentinc/ksqldb-cli:0.28.2
 }
+
 azr_push() {
   REGISTRY=$(echo $1 | cut -d '.' -f1)
   TOKEN=$(az acr login \
@@ -73,3 +77,5 @@ azr_push() {
     --query accessToken)
   podman push $1 --creds 00000000-0000-0000-0000-000000000000:$TOKEN
 }
+
+alias pandabroker="podman ps | grep redpanda | sed  's/.*0.0.0.0:\(.*\)-.*/localhost:\1/g'"

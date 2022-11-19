@@ -75,7 +75,7 @@ source ~/.vim/c.vim
 source ~/.vim/agda.vim
 source ~/.vim/abbreviations.vim
 
-autocmd Filetype java setlocal ts=4 sw=4 sts=4 expandtab
+autocmd Filetype java setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype erlang setlocal ts=4 sw=4 sts=4 expandtab
 autocmd BufNewFile,BufRead *.tex,*.txt set wrap linebreak
 
@@ -95,3 +95,4 @@ augroup END
 
 let g:ftplugin_sql_omni_key = '<C-j>'
 
+tnoremap <C-T> <C-\><C-N>
