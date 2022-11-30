@@ -1,8 +1,10 @@
-PS1='\W § '
+export PS1='\W § '
+export HELM_DIFF_COLOR=true
 
 alias l='ls -la'
 alias r='source ~/.bashrc'
 
+source <(kubectl completion bash)
 complete -o default -F __start_kubectl kctl
 export DOCKER_HOST=unix:///run/user/${UID}/podman/podman.sock
 
@@ -79,3 +81,7 @@ azr_push() {
 }
 
 alias pandabroker="podman ps | grep redpanda | sed  's/.*0.0.0.0:\(.*\)-.*/localhost:\1/g'"
+
+mermaid() {
+  podman run -it -v `pwd`:/data:z --user 0 minlag/mermaid-cli -i /data/$1
+}
