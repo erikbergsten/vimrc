@@ -4,18 +4,31 @@ export HELM_DIFF_COLOR=true
 alias l='ls -la'
 alias r='source ~/.bashrc'
 
-source <(kubectl completion bash)
-complete -o default -F __start_kubectl kctl
-export DOCKER_HOST=unix:///run/user/${UID}/podman/podman.sock
+if command -v kubectl &> /dev/null
+then
 
 alias kctl='kubectl'
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl kctl
+
+fi
+
+if command -v podman &> /dev/null
+then
+export DOCKER_HOST=unix:///run/user/${UID}/podman/podman.sock
+fi
+
 alias watch='watch '
 alias watch10='watch -n10 '
 alias watch60='watch -n60 '
 alias watch300='watch -n300 '
 
+export EDITOR=vim
+if command -v nvim &> /dev/null
+then
 alias vim='nvim'
 export EDITOR=nvim
+fi
 
 NODE_IMAGE=node:18.10.0-alpine3.15
 
