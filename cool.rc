@@ -18,7 +18,7 @@ then
 export DOCKER_HOST=unix:///run/user/${UID}/podman/podman.sock
 fi
 
-alias watch='watch '
+alias watch='watch -t -w '
 alias watch10='watch -n10 '
 alias watch60='watch -n60 '
 alias watch300='watch -n300 '
