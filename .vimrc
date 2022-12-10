@@ -6,7 +6,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=4
 set expandtab
-set colorcolumn=81
+set colorcolumn=81,101,168,208
 set ruler
 set scrolloff=5
 set backspace=start,eol,indent
