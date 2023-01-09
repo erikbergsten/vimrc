@@ -1,6 +1,9 @@
 export PS1='\W § '
 export HELM_DIFF_COLOR=true
 
+alias ts='python3 -c "import time; print(round(time.time() * 1000))"'
+alias tsc='python3 -c "import time; print(round(time.time() * 1000))" | xclip -r -sel c'
+
 alias l='ls -la'
 alias r='source ~/.bashrc'
 
@@ -18,7 +21,7 @@ then
 export DOCKER_HOST=unix:///run/user/${UID}/podman/podman.sock
 fi
 
-alias watch='watch -t -w '
+alias watch='watch -t '
 alias watch10='watch -n10 '
 alias watch60='watch -n60 '
 alias watch300='watch -n300 '
@@ -33,7 +36,7 @@ fi
 NODE_IMAGE=node:18.10.0-alpine3.15
 
 nodejs () {
-  podman run -it --rm -v `pwd`:/app:z -w /app --network host --entrypoint $1 $NODE_IMAGE ${@:2}
+  podman run -it --rm --sig-proxy=true -v `pwd`:/app:z -w /app --network host --entrypoint $1 $NODE_IMAGE ${@:2}
 }
 
 deactivate () {
