@@ -1,4 +1,4 @@
-export PS1='\W § '
+export PS1='[\h] \W § '
 export HELM_DIFF_COLOR=true
 
 alias ts='python3 -c "import time; print(round(time.time() * 1000))"'
