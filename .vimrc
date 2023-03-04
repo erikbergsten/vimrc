@@ -12,6 +12,8 @@ set scrolloff=5
 set backspace=start,eol,indent
 set numberwidth=5
 
+set wildmode=longest:full,full
+
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
 syntax on
