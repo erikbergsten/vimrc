@@ -46,9 +46,12 @@ deactivate () {
   unalias npx
 }
 
+if command -v podman &> /dev/null
+then
 alias npm='nodejs npm'
 alias node='nodejs node'
 alias npx='nodejs npx'
+fi
 
 KAFKA_IMAGE=bitnami/kafka:latest
 
