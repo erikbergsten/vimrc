@@ -98,3 +98,11 @@ augroup END
 let g:ftplugin_sql_omni_key = '<C-j>'
 
 tnoremap <C-T> <C-\><C-N>
+
+
+function! MyCur(r, c) 
+  call cursor(a:r, a:c)
+endfunction
+
+command! -nargs=* C call MyCur(<f-args>)
+
