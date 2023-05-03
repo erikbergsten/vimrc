@@ -98,6 +98,15 @@ azr_push() {
     --query accessToken)
   podman push $1 --creds 00000000-0000-0000-0000-000000000000:$TOKEN
 }
+azr_pull() {
+  REGISTRY=$(echo $1 | cut -d '.' -f1)
+  TOKEN=$(az acr login \
+    --name $REGISTRY \
+    --expose-token \
+    -o tsv \
+    --query accessToken)
+  podman pull $1 --creds 00000000-0000-0000-0000-000000000000:$TOKEN
+}
 
 alias pandabroker="podman ps | grep redpanda | sed  's/.*0.0.0.0:\(.*\)-.*/localhost:\1/g'"
 
