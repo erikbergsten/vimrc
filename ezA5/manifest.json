@@ -1,10 +1,10 @@
 {
   "name": "ezA5",
   "version": "1.0",
-  "manifest_version": 2,
-  "description": "Make the world go 'round",
+  "manifest_version": 3,
+  "description": "Keyboard layout of doom.",
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
   "permissions": [
     "input"
@@ -14,10 +14,9 @@
       "name": "ezA5",
       "type": "ime",
       "id": "ezA5",
-      "description": "Make the world go 'round",
+      "description": "keyboard layout of doom",
       "language": "sv",
       "layouts": ["se(dvorak)"]
     }
   ]
 }
-
