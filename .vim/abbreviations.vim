@@ -85,3 +85,12 @@ iabbrev UOmega <c-v>u03a9
 iabbrev Unat <c-v>u2115
 iabbrev Ucomp <c-v>u2102
 iabbrev Uint <c-v>u2124
+
+" abbreviations for cool colors
+iabbrev Coff \033[0m
+iabbrev Cred \033[0;31m
+iabbrev Cgreen \033[0;32m
+iabbrev Cblue \033[1;34m
+iabbrev Cyellow \033[1;33m
+iabbrev Ccyan \033[0;36m
+iabbrev Cpurple \033[0;35m
