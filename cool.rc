@@ -36,14 +36,7 @@ fi
 NODE_IMAGE=node:18.10.0-alpine3.15
 
 nodejs () {
-  podman run -it --rm --sig-proxy=true -v `pwd`:/app:z -w /app --network host --entrypoint $1 $NODE_IMAGE ${@:2}
-}
-
-deactivate () {
-  unset nodejs
-  unalias npm
-  unalias node
-  unalias npx
+  podman run -it --rm --sig-proxy=true -v `pwd`:/app:z  -w /app --network host --entrypoint $1 $NODE_IMAGE ${@:2}
 }
 
 if command -v podman &> /dev/null
@@ -80,13 +73,13 @@ ksql-server() {
     -e KSQL_BOOTSTRAP_SERVERS=localhost:9092 \
     -e KSQL_KSQL_LOGGING_PROCCESSING_STREAM_AUTO_CREATE="true" \
     -e KSQL_KSQL_LOGGING_PROCCESSING_TOPIC_AUTO_CREATE="true" \
-    confluentinc/ksqldb-server:0.28.2
+    confluentinc/ksqldb-server:0.29.0
 }
 
 ksql-cli() {
   podman run --network host --name ksql-cli --rm -it \
     --entrypoint ksql \
-    confluentinc/ksqldb-cli:0.28.2
+    confluentinc/ksqldb-cli:0.29.0
 }
 
 azr_push() {
