@@ -15,11 +15,13 @@ type Change = {
 }
 
 function readChange(line: string): Change {
+  console.log("reading cahneg from:", line);
   const [ insertions, deletions, file] = line.split('\t')
+  console.log(`got ${file}: ${insertions}/${deletions}`);
   return {
     file,
-    insertions: parseInt(insertions),
-    deletions: parseInt(deletions)
+    insertions: parseInt(insertions) || 0,
+    deletions: parseInt(deletions) || 0
   }
 }
 
