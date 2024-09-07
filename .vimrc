@@ -11,6 +11,7 @@ set ruler
 set scrolloff=5
 set backspace=start,eol,indent
 set numberwidth=5
+colorscheme elflord
 
 set wildmode=longest:full,full
 
@@ -80,12 +81,12 @@ source ~/.vim/abbreviations.vim
 autocmd Filetype java setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype erlang setlocal ts=4 sw=4 sts=4 expandtab
 autocmd BufNewFile,BufRead *.tex,*.txt set wrap linebreak
+autocmd Filetype go setlocal ts=4 sw=4 sts=4 noexpandtab
 
 augroup typescriptx_files
   autocmd!
   autocmd BufNewFile,BufRead *.tsx set syntax=typescript
 augroup END
-
 augroup json_files
   autocmd!
   autocmd BufNewFile,BufRead *.json set syntax=yaml
