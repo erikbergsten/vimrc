@@ -11,6 +11,7 @@ set ruler
 set scrolloff=5
 set backspace=start,eol,indent
 set numberwidth=5
+set backupcopy=yes
 colorscheme elflord
 
 set wildmode=longest:full,full
@@ -73,6 +74,7 @@ vnoremap @ :normal @
 
 iabbrev somerandom <C-r>=system('openssl rand -base64 21')[:-2]<CR>
 
+source ~/.vim/templates.vim
 source ~/.vim/clojure.vim
 source ~/.vim/c.vim
 source ~/.vim/agda.vim
@@ -94,6 +96,14 @@ augroup END
 augroup gotmpl
   autocmd!
   autocmd BufNewFile,BufRead *.gotmpl set syntax=yaml
+augroup END
+augroup njk
+  autocmd!
+  autocmd BufNewFile,BufRead *.njk set syntax=html
+augroup END
+augroup rails
+  autocmd!
+  autocmd BufNewFile,BufRead *.html.rb set syntax=html
 augroup END
 
 let g:ftplugin_sql_omni_key = '<C-j>'
