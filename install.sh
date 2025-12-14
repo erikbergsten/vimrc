@@ -9,10 +9,11 @@ rm ~/.tmux.conf
 ln -sf $PWD/.tmux.conf ~/.tmux.conf
 
 mkdir -p ~/.config/nvim
-ln -sf  ~/.vimrc ~/.config/nvim/init.vim
+ln -sf  $PWD/lua ~/.config/nvim/
 
 echo "source $PWD/cool.rc" >> ~/.bashrc
 echo "export PATH=\$PATH:$PWD/bin" >> ~/.bashrc
+echo "export VIMPATH=$PWD" >> ~/.bashrc
 
 chmod +x bin/kubedev.sh
 chmod +x bin/remote_sync.sh
