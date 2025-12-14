@@ -109,3 +109,5 @@ alias pandabroker="docker ps | grep redpanda | sed  's/.*0.0.0.0:\(.*\)-.*/local
 mermaid() {
   docker run -it -v `pwd`:/data:z --user 0 minlag/mermaid-cli -i /data/$1
 }
+
+alias zfull="zellij --layout $VIMPATH/layouts/full"
