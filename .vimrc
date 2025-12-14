@@ -12,7 +12,7 @@ set scrolloff=5
 set backspace=start,eol,indent
 set numberwidth=5
 set backupcopy=yes
-colorscheme elflord
+colorscheme vim
 
 set wildmode=longest:full,full
 
