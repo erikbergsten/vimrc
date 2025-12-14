@@ -60,15 +60,22 @@ onoremap <leader>s i"
 onoremap <leader>( i(
 onoremap <leader>[ i[
 onoremap <leader>{ i{
+
 "when caret is to the left of a container
-onoremap <leader>ns :<c-u>normal! f"vi"<cr>
+onoremap <leader>ns :<c-u>normal! 2f"vi"<cr>
 onoremap <leader>n( :<c-u>normal! f(vi(<cr>
 onoremap <leader>n{ :<c-u>normal! f{vi{<cr>
 onoremap <leader>n[ :<c-u>normal! f[vi[<cr>
 
+"when caret is to the right of a container
+onoremap <leader>ps :<c-u>normal! 2F"vi"<cr>
+onoremap <leader>p( :<c-u>normal! F(vi(<cr>
+onoremap <leader>p{ :<c-u>normal! F{vi{<cr>
+onoremap <leader>p[ :<c-u>normal! F[vi[<cr>
+
 "for xclip clipboard usage when vim * and + registers arent available
-vnoremap <leader>y :w !xclip -sel c -i<cr><cr>
-nnoremap <leader>p :r !xclip -sel c -o<cr>
+vnoremap <leader>y :w !wl-paste<cr><cr>
+nnoremap <leader>p :r !wl-copy<cr>
 
 vnoremap @ :normal @
 
