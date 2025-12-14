@@ -81,7 +81,6 @@ vnoremap @ :normal @
 
 iabbrev somerandom <C-r>=system('openssl rand -base64 21')[:-2]<CR>
 
-source ~/.vim/templates.vim
 source ~/.vim/clojure.vim
 source ~/.vim/c.vim
 source ~/.vim/agda.vim
