@@ -1,7 +1,7 @@
 layout {
   pane split_direction="horizontal" {
     pane split_direction="vertical" {
-      pane borderless=true
+      pane borderless=true size=85
       pane split_direction="horizontal" {
         pane
         pane stacked=true {

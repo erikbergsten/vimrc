@@ -50,7 +50,7 @@ inoremap <c-u> <esc>viwUea
 nnoremap <c-n> 81\|Bhs<enter><esc>
 "edit and reload vimrc
 nnoremap <leader>ev :split ~/.vimrc<cr>G
-nnoremap <leader>sv :source ~/.vimrc<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.lua<cr>
 "singe or doubleqoute a word
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
