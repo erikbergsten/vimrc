@@ -1,4 +1,5 @@
 set wrap
+set nomodeline
 set hlsearch
 set autoindent
 set number
