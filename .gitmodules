@@ -1,0 +1,3 @@
+[submodule "nvim/pack/plugins/start/jw.nvim"]
+	path = nvim/pack/plugins/start/jw.nvim
+	url = git@github.com:erikbergsten/java-wonder.git
