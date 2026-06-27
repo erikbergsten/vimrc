@@ -1,7 +1,7 @@
 from alpine:latest
 
 run apk update
-run apk add bash curl neovim git openssh tmux
+run apk add bash curl neovim git openssh tmux docker bash-completion docker-bash-completion
 
 workdir /config
 run git clone https://github.com/erikbergsten/vimrc.git
@@ -11,7 +11,7 @@ run bash install.sh
 copy .profile /root/.profile
 copy .gitconfig /root/.gitconfig
 
-env SSH_AUTH_SOCK=/ssh-sock
+env SSH_AUTH_SOCK=/ssh-agent
 env BASH=/bin/bash
 
 workdir /work
