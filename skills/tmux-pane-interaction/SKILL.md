@@ -27,3 +27,9 @@ Or execute a command in that pane
 ```
 tmux send-keys -t %<id> "echo hello world" Enter
 ```
+
+If you need to bring the users attention to  pane you can set the notification property and it will be marked in the UI
+
+```
+tmux set-option -t %<id>  -p @notification "yes"
+```

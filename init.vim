@@ -13,7 +13,7 @@ set scrolloff=5
 set backspace=start,eol,indent
 set numberwidth=5
 set backupcopy=yes
-colorscheme vim
+colorscheme elflord
 
 set wildmode=longest:full,full
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -67,3 +67,4 @@ iabbrev somerandom <C-r>=system('openssl rand -base64 21')[:-2]<CR>
 " vnoremap <leader>y :w !wl-copy<cr>
 vnoremap <leader>y "+y
 nnoremap <leader>p "+p
+
