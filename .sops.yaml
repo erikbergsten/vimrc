@@ -1,11 +1,8 @@
-# SOPS creation rules: encrypt secrets.yaml with age, using SSH public keys
-# as recipients. Replace the placeholder below with your SSH public key
-# (cat ~/.ssh/id_ed25519.pub), and add one line per laptop/workstation.
-#
-# sops looks for this file starting in the current directory and walking up,
-# and matches path_regex against the file path relative to this config file.
-# So run sops from the repo root, on secrets.yaml (not secrets.example.yaml).
+# SOPS creation rule: encrypt with PGP (GPG) keys. Replace the placeholder
+# fingerprint below with your key's fingerprint
+# (gpg --list-secret-keys --keyid-format long); add one per
+# laptop/workstation, comma separated. No path_regex: this single rule
+# matches every file. sops finds this file starting in the current directory
+# and walking up, so run sops from the repo root (or pass --config).
 creation_rules:
-  - path_regex: (^|/)secrets\.yaml$
-    age: >-
-      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIREPLACE_WITH_YOUR_PUBLIC_KEY
+  - pgp: '0000000000000000000000000000000000000000'
