@@ -22,7 +22,15 @@ chmod +x /usr/local/bin/sops
 ```sh
 gpg --quick-gen-key 'Your Name <you@example.com>' default default never
 gpg --list-secret-keys --keyid-format long   # copy the 40-hex-char fingerprint
+# one-liner for just the fingerprint:
+gpg --list-secret-keys --with-colons | awk -F: '/^fpr/ {print $10; exit}'
 ```
+
+Empty output from `--list-secret-keys` just means that keyring has no secret
+keys — e.g. the key was generated as a different user (each user has their own
+`~/.gnupg`), or you are on the VM where only the *public* key was imported.
+Generate the key on the device that should own it and read the fingerprint
+there.
 
 Edit `.sops.yaml` and replace the placeholder fingerprint. One fingerprint
 per laptop/workstation, comma separated (a YAML list works too):
