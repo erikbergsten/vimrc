@@ -30,7 +30,23 @@ Empty output from `--list-secret-keys` just means that keyring has no secret
 keys — e.g. the key was generated as a different user (each user has their own
 `~/.gnupg`), or you are on the VM where only the *public* key was imported.
 Generate the key on the device that should own it and read the fingerprint
-there.
+there. (On the VM an empty secret-key list is expected and fine: decryption
+there goes through the forwarded gpg-agent, no local secret key needed.)
+
+### one key for both SSH and sops (optional)
+
+A bare SSH public key cannot be a sops/PGP recipient (gpg cannot encrypt to
+`ssh-ed25519 ...`). Instead, give your PGP key an authentication subkey and
+export that as your SSH public key — then one key, held only by gpg-agent,
+serves both SSH (forwardable with `ssh -A`) and sops (forwardable with the
+RemoteForward in section 4):
+
+```sh
+gpg --quick-add-key '<FPR>' ed25519 auth never
+gpg --export-ssh-key '<FPR>!'    # -> ssh-ed25519 AAAA... openpgp:0x... (authorized_keys / GitHub)
+echo 'enable-ssh-support' >> ~/.gnupg/gpg-agent.conf
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+```
 
 Edit `.sops.yaml` and replace the placeholder fingerprint. One fingerprint
 per laptop/workstation, comma separated (a YAML list works too):
