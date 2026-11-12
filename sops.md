@@ -114,6 +114,11 @@ gpg --import pubkey.asc
 gpgconf --kill gpg-agent        # stop a local agent so the forwarded socket is used
 rm -f /root/.gnupg/S.gpg-agent* # remove stale sockets if present
 
+# verify the forwarded agent is really the laptop's: lists keygrips held by
+# the agent (should match your key on the laptop, not be empty/local):
+gpg-connect-agent 'keyinfo --list' /bye
+ls -la /root/.gnupg/S.gpg-agent     # socket present (type 's') = RemoteForward established
+
 # print plaintext (avoid logging it; the passphrase prompt appears on the laptop)
 sops --decrypt secrets.yaml
 
