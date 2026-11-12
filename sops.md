@@ -11,9 +11,9 @@ and no key material ever lands on the VM.
 # macOS
 brew install sops gnupg
 
-# Debian/Ubuntu (droplet; gnupg is already installed by cloud-init.yaml)
+# Debian/Ubuntu (droplet; gnupg + sops are already installed by cloud-init.yaml)
 apt-get install -y gnupg
-curl -Lo /usr/local/bin/sops https://github.com/getsops/sops/releases/latest/download/sops-latest.linux.amd64
+curl -fsSL -o /usr/local/bin/sops https://github.com/getsops/sops/releases/download/v3.13.3/sops-v3.13.3.linux.amd64
 chmod +x /usr/local/bin/sops
 ```
 
