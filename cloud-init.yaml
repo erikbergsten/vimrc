@@ -1,0 +1,33 @@
+#cloud-config
+package_update: true
+package_upgrade: false
+
+packages:
+  - tmux
+  - git
+  - curl
+  - ca-certificates
+  - gnupg
+
+runcmd:
+  # 1 & 2. Node.js + npm from NodeSource (Debian 12 / bookworm)
+  - |
+    curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+    apt-get install -y nodejs
+  # 3. uv
+  - |
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    cp /root/.local/bin/uv /usr/local/bin/uv
+    cp /root/.local/bin/uvx /usr/local/bin/uvx
+  # 4. git identity
+  - git config --global user.name "erik bergsten"
+  - git config --global user.email "erikbergsten94@gmail.com"
+  # 5. clone this repo into /root/
+  - git clone https://github.com/erikbergsten/vimrc.git /root/vimrc
+  # 6. install tmux + nvim configs
+  - mkdir -p /root/.config/tmux /root/.config/nvim
+  - ln -sf /root/vimrc/tmux.conf /root/.config/tmux/tmux.conf
+  - ln -sf /root/vimrc/init.vim /root/.config/nvim/init.vim
+  # 7. allow ssh agent forwarding and restart sshd
+  - sed -i 's/^#\?AllowAgentForwarding.*/AllowAgentForwarding yes/' /etc/ssh/sshd_config
+  - systemctl restart ssh
