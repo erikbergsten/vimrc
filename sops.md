@@ -122,6 +122,14 @@ rm -f /root/.gnupg/S.gpg-agent* # remove stale sockets if present
 # the agent (should match your key on the laptop, not be empty/local):
 gpg-connect-agent 'keyinfo --list' /bye
 ls -la /root/.gnupg/S.gpg-agent     # socket present (type 's') = RemoteForward established
+# if `keyinfo --list` only prints OK (no KEYINFO lines), the socket is a local
+# empty agent, not the forwarded one: on the VM run `pgrep -a gpg-agent` — if a
+# process exists, `gpgconf --kill gpg-agent`, rm the stale socket, reconnect.
+# On the iPad confirm the agent side first:
+#   gpgconf --kill gpg-agent; gpg --list-secret-keys >/dev/null
+#   gpg-connect-agent 'keyinfo --list' /bye     # should list your keygrips
+#   gpgconf --list-dirs agent-extra-socket      # use THIS path as the
+#                                               # RemoteForward local target
 # NB: `gpg --list-keys` / `--list-secret-keys` read the VM's LOCAL keyring and
 # stay empty until you `gpg --import pubkey.asc` — the forwarded socket only
 # carries private-key operations via the agent, it does not forward the
