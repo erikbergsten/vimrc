@@ -113,6 +113,10 @@ then use sops as usual:
 gpg --import pubkey.asc
 gpgconf --kill gpg-agent        # stop a local agent so the forwarded socket is used
 rm -f /root/.gnupg/S.gpg-agent* # remove stale sockets if present
+# (once per boot is enough: a local gpg-agent autostarts at first gpg use and
+#  grabs /root/.gnupg/S.gpg-agent; StreamLocalBindUnlink yes in ~/.ssh/config
+#  already removes a stale socket file at connect, the kill handles a running
+#  local agent. If forwarding works right away, you don't need this at all.)
 
 # verify the forwarded agent is really the laptop's: lists keygrips held by
 # the agent (should match your key on the laptop, not be empty/local):
