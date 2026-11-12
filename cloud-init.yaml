@@ -31,3 +31,5 @@ runcmd:
   # 7. allow ssh agent forwarding and restart sshd
   - sed -i 's/^#\?AllowAgentForwarding.*/AllowAgentForwarding yes/' /etc/ssh/sshd_config
   - systemctl restart ssh
+  # 8. append bashrc (PS1 prompt, PROMPT_COMMAND, r alias) to /root/.bashrc
+  - cat /root/vimrc/bashrc >> /root/.bashrc
