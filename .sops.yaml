@@ -1,0 +1,7 @@
+# SOPS creation rules: encrypt secrets.yaml with age, using SSH public keys
+# as recipients. Replace the placeholder below with your SSH public key
+# (cat ~/.ssh/id_ed25519.pub), and add one line per laptop/workstation.
+creation_rules:
+  - path_regex: secrets\.yaml$
+    age: >-
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIREPLACE_WITH_YOUR_PUBLIC_KEY
