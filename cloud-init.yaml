@@ -28,3 +28,6 @@ runcmd:
   - mkdir -p /root/.config/tmux /root/.config/nvim
   - ln -sf /root/vimrc/tmux.conf /root/.config/tmux/tmux.conf
   - ln -sf /root/vimrc/init.vim /root/.config/nvim/init.vim
+  # 7. allow ssh agent forwarding and restart sshd
+  - sed -i 's/^#\?AllowAgentForwarding.*/AllowAgentForwarding yes/' /etc/ssh/sshd_config
+  - systemctl restart ssh
