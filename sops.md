@@ -122,6 +122,11 @@ rm -f /root/.gnupg/S.gpg-agent* # remove stale sockets if present
 # the agent (should match your key on the laptop, not be empty/local):
 gpg-connect-agent 'keyinfo --list' /bye
 ls -la /root/.gnupg/S.gpg-agent     # socket present (type 's') = RemoteForward established
+# NB: `gpg --list-keys` / `--list-secret-keys` read the VM's LOCAL keyring and
+# stay empty until you `gpg --import pubkey.asc` — the forwarded socket only
+# carries private-key operations via the agent, it does not forward the
+# keyring. `gpg-connect-agent keyinfo --list` is the command that proves the
+# forwarding itself works.
 
 # print plaintext (avoid logging it; the passphrase prompt appears on the laptop)
 sops --decrypt secrets.yaml
