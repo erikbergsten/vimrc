@@ -166,7 +166,13 @@ or "Unusable public key" — replace it with a real fingerprint first (section 2
 
 ## security notes
 
-- Only ciphertext is committed; never commit plaintext `secrets.yaml`.
+- Only ciphertext is committed; never commit plaintext `secrets.yaml`
+  (it is gitignored).
+- Commit `.sops.yaml` (fingerprints only) and the encrypted `secrets.yaml`.
+  **Never commit secret keys** (`gpg --export-secret-keys`), `~/.gnupg`, or
+  revocation certificates. The *public* key (`gpg --export -a '<FPR>'`) is
+  safe to share — publish it on a keyserver or your GitHub profile so others
+  can encrypt to you.
 - File structure/metadata (key names, timestamps) is visible in a public repo.
 - A forwarded gpg-agent means root on the connected VM can use your key while
   the session is open — only forward to VMs you trust.
