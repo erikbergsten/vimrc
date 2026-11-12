@@ -77,8 +77,9 @@ sops encrypt --in-place secrets.yaml
 # alternative: create the file directly in the sops editor (encrypts on save):
 #   rm secrets.yaml && sops secrets.yaml
 
-# commit only the encrypted file; plaintext secrets.yaml is gitignored
-git add .sops.yaml secrets.yaml
+# commit only the encrypted file; plaintext secrets.yaml is gitignored,
+# so force-add the encrypted one:
+git add -f secrets.yaml .sops.yaml
 git commit -m "add encrypted secrets"
 ```
 
