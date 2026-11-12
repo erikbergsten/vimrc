@@ -118,6 +118,14 @@ Add every pubkey to GitHub (Settings -> SSH keys) and to `.sops.yaml`.
 A leftover placeholder recipient fails differently ("malformed SSH recipient"):
 replace it with your real public key in `.sops.yaml` first (section 2).
 
+`sops metadata not found` means the file you passed is not encrypted yet —
+`--decrypt`, `exec-env`, and `sops <file>` (edit) only work on files that
+already contain the `sops:` metadata block. If `secrets.yaml` is still the
+plaintext copy from `secrets.example.yaml`, encrypt it first:
+`sops encrypt --in-place secrets.yaml` (or create it via `sops secrets.yaml`
+without copying first). Also avoid a catch-all `path_regex: .*` — it makes
+every file in the repo a sops target; keep the rule scoped to `secrets.yaml`.
+
 ## security notes
 
 - Only ciphertext is committed; never commit plaintext `secrets.yaml`.
