@@ -32,17 +32,21 @@ enough on VMs.
 
 ## 3. create and encrypt a secrets file
 
+Run sops from the repo root (where `.sops.yaml` lives), and always on
+`secrets.yaml` — never on `secrets.example.yaml`:
+
 ```sh
+cd ~/vimrc
 cp secrets.example.yaml secrets.yaml
 $EDITOR secrets.yaml        # put real values in
 
-# either edit through sops (encrypts on save):
-sops secrets.yaml
+# encrypt the finished file in place:
+sops encrypt --in-place secrets.yaml
 
-# or encrypt a finished file in place:
-sops --encrypt --in-place secrets.yaml
+# alternative: create the file directly in the sops editor (encrypts on save):
+#   rm secrets.yaml && sops secrets.yaml
 
-# add secrets.yaml (plaintext) to .gitignore; commit only the encrypted file
+# commit only the encrypted file; plaintext secrets.yaml is gitignored
 git add .sops.yaml secrets.yaml
 git commit -m "add encrypted secrets"
 ```
@@ -98,6 +102,21 @@ Host github.com
 ```
 
 Add every pubkey to GitHub (Settings -> SSH keys) and to `.sops.yaml`.
+
+## troubleshooting
+
+`error loading config: no matching creation rules found` means sops found a
+`.sops.yaml` but no creation rule matched the file you passed. sops looks for
+`.sops.yaml` starting in the current directory and walking up, and matches
+`path_regex` against the file path relative to that config file. So:
+
+- run sops from the repo root (`cd ~/vimrc`), and
+- pass `secrets.yaml`, not `secrets.example.yaml` or another path — from
+  anywhere else, point sops at the config explicitly:
+  `sops --config ~/vimrc/.sops.yaml --decrypt ~/vimrc/secrets.yaml`
+
+A leftover placeholder recipient fails differently ("malformed SSH recipient"):
+replace it with your real public key in `.sops.yaml` first (section 2).
 
 ## security notes
 

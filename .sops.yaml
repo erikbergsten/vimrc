@@ -1,7 +1,11 @@
 # SOPS creation rules: encrypt secrets.yaml with age, using SSH public keys
 # as recipients. Replace the placeholder below with your SSH public key
 # (cat ~/.ssh/id_ed25519.pub), and add one line per laptop/workstation.
+#
+# sops looks for this file starting in the current directory and walking up,
+# and matches path_regex against the file path relative to this config file.
+# So run sops from the repo root, on secrets.yaml (not secrets.example.yaml).
 creation_rules:
-  - path_regex: secrets\.yaml$
+  - path_regex: (^|/)secrets\.yaml$
     age: >-
       ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIREPLACE_WITH_YOUR_PUBLIC_KEY
