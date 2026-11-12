@@ -7,6 +7,7 @@ its everything
 install by creating a symlink
 
 ```
+mkdir ~/.config/tmux/
 ln -s $PWD/tmux.conf ~/.config/tmux/tmux.conf
 ```
 
@@ -58,5 +59,6 @@ important features:
 install by creating as symlink
 
 ```
+mkdir ~/.config/nvim/
 ln -s $PWD/init.vim ~/.config/nvim/init.vim
 ```
