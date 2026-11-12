@@ -24,6 +24,11 @@ gpg --quick-gen-key 'Your Name <you@example.com>' default default never
 gpg --list-secret-keys --keyid-format long   # copy the 40-hex-char fingerprint
 # one-liner for just the fingerprint:
 gpg --list-secret-keys --with-colons | awk -F: '/^fpr/ {print $10; exit}'
+
+# headless device where pinentry can't prompt (e.g. an iPad root shell):
+# generate a passphrase-less key instead — gpg then never needs to prompt:
+gpg --batch --pinentry-mode loopback --passphrase '' \
+    --quick-gen-key 'Your Name <you@example.com>' default default never
 ```
 
 Empty output from `--list-secret-keys` just means that keyring has no secret
