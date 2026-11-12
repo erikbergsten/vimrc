@@ -5,8 +5,10 @@ alias r='source ~/.bashrc'
 
 # keep a stable agent socket path so persistent tmux sessions keep working
 # after the original SSH session (and its agent socket) is gone
-if [ -n "$SSH_AUTH_SOCK" ]; then
+# skip if SSH_AUTH_SOCK is already the stable path (e.g. inside tmux),
+# otherwise ln would recreate the symlink pointing to itself
+if [ -n "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ]; then
   mkdir -p ~/.ssh
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/agent_sock
-  export SSH_AUTH_SOCK=~/.ssh/agent_sock
+  ln -sfn "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
+  export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
