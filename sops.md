@@ -1,8 +1,10 @@
 # sops + age secrets setup
 
 Store API keys and other secrets as SOPS-encrypted files in this repo, using
-SSH public keys as age recipients. Any machine whose SSH private key is in the
-forwarded agent can decrypt — no passwords or extra credentials per VM.
+SSH public keys as age recipients. Any machine that has the matching SSH
+*private key file* on disk can decrypt — note that sops does NOT use
+ssh-agent for `ssh-` recipients (see section 4), so agent forwarding alone is
+not enough on VMs.
 
 ## 1. install
 
@@ -25,10 +27,10 @@ cat ~/.ssh/id_ed25519.pub
 # ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... your-laptop
 ```
 
-One `ssh-ed25519 ...` line per laptop/workstation. SSH skips keys that are
-not present on a machine, and the age/SSH recipient decryption goes through
-the local ssh-agent, so agent forwarding (`AllowAgentForwarding yes`) is
-enough on VMs.
+One `ssh-ed25519 ...` line per laptop/workstation. On decrypt, sops reads the
+private key from disk: `SOPS_AGE_SSH_PRIVATE_KEY_FILE` if set, else
+`~/.ssh/id_ed25519`, else `~/.ssh/id_rsa` (the key must be unencrypted —
+passphrase-protected keys are unsupported). ssh-agent is not consulted.
 
 ## 3. create and encrypt a secrets file
 
@@ -56,9 +58,19 @@ git commit -m "add encrypted secrets"
 The committed file contains only `ENC[...]` ciphertext plus the wrapped file
 key — safe for a public repo.
 
-## 4. decrypt / use on a VM (with agent forwarded)
+## 4. decrypt / use on a VM
+
+Decrypting an `ssh-` age recipient needs the private key file on the machine.
+On a VM there is no forwarded-agent decryption, so either place the key
+(passphrase-less) or switch to a native age key:
 
 ```sh
+# option A: put the private key on the VM (e.g. scp ~/.ssh/id_ed25519 root@vm:~/.ssh/, chmod 600)
+#   — or point sops at it: export SOPS_AGE_SSH_PRIVATE_KEY_FILE=/path/to/id_ed25519
+# option B: native age key instead of SSH: age-keygen -o ~/.config/sops/age/keys.txt,
+#   use the age1... recipient in .sops.yaml instead of ssh-ed25519 ...
+# option C: true agent-based decryption via age-plugin-sshagent (age1sshagent1... recipients)
+
 # print plaintext (avoid logging it)
 sops --decrypt secrets.yaml
 
