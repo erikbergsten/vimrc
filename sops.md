@@ -40,7 +40,9 @@ cd ~/vimrc
 cp secrets.example.yaml secrets.yaml
 $EDITOR secrets.yaml        # put real values in
 
-# encrypt the finished file in place:
+# encrypt the finished file in place (bare `sops encrypt secrets.yaml` prints
+# ciphertext to stdout and leaves the file plaintext — always pass --in-place,
+# or redirect to a different file: `sops encrypt secrets.yaml > secrets.enc.yaml`):
 sops encrypt --in-place secrets.yaml
 
 # alternative: create the file directly in the sops editor (encrypts on save):
