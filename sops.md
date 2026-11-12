@@ -119,6 +119,26 @@ set -a; source <(sops --decrypt --output-type dotenv secrets.yaml); set +a
 ./myprogram
 ```
 
+### fresh VM checklist
+
+The PGP **secret** key never goes on a VM — that's the point of the forwarding.
+A new VM only needs:
+
+1. `gnupg` + `sops` installed (cloud-init already installs gnupg; add sops with
+   the curl command from section 1).
+2. Your **public** key imported: `gpg --import pubkey.asc` (commit `pubkey.asc`
+   to the repo — public keys are safe to share) or
+   `gpg --keyserver keyserver.ubuntu.com --recv-keys <FPR>`.
+3. The repo cloned (cloud-init already does this), so `.sops.yaml` and the
+   encrypted `secrets.yaml` are present.
+4. On the **laptop**, a `Host` entry with the `RemoteForward` above — that
+   lives in `~/.ssh/config` on the laptop, so it applies to every new VM
+   automatically; nothing key-related is configured on the VM itself.
+
+Note: plain `ssh -A` / `ForwardAgent yes` only forwards SSH *signing*. sops/PGP
+decryption on the VM needs the gpg-agent socket `RemoteForward`, which is a
+separate directive.
+
 ## 5. add a new workstation later
 
 ```sh
