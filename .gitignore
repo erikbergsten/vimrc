@@ -12,3 +12,6 @@ tags
 **/4913
 
 bin/git-metrics
+
+# sops: never commit the plaintext file, only the encrypted one
+secrets.yaml
