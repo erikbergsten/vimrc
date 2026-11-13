@@ -31,8 +31,10 @@ runcmd:
   # 7. install sops (pinned release) for SOPS-encrypted secrets; gnupg is already in packages
   - curl -fsSL -o /usr/local/bin/sops https://github.com/getsops/sops/releases/download/v3.13.3/sops-v3.13.3.linux.amd64
   - chmod +x /usr/local/bin/sops
-  # 8. allow ssh agent forwarding and restart sshd
+  # 8. create ~/.gnupg with mode 700 so gpg-agent RemoteForward can bind its socket from the root shell
+  - mkdir -p ~/.gnupg && chmod 700 ~/.gnupg
+  # 9. allow ssh agent forwarding and restart sshd
   - sed -i 's/^#\?AllowAgentForwarding.*/AllowAgentForwarding yes/' /etc/ssh/sshd_config
   - systemctl restart ssh
-  # 9. append bashrc (PS1 prompt, PROMPT_COMMAND, r alias, stable ssh-agent socket) to /root/.bashrc
+  # 10. append bashrc (PS1 prompt, PROMPT_COMMAND, r alias, stable ssh-agent socket) to /root/.bashrc
   - cat /root/vimrc/bashrc >> /root/.bashrc
