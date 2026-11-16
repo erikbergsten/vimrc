@@ -19,17 +19,22 @@ runcmd:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     cp /root/.local/bin/uv /usr/local/bin/uv
     cp /root/.local/bin/uvx /usr/local/bin/uvx
-  # 4. git identity
+  # 4. neovim from GitHub releases (not the Debian repo)
+  - |
+    curl -fsSLO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+    tar -xzf nvim-linux-x86_64.tar.gz -C /usr/local --strip-components=1
+    rm -f nvim-linux-x86_64.tar.gz
+  # 5. git identity
   - git config --global user.name "erik bergsten"
   - git config --global user.email "erikbergsten94@gmail.com"
-  # 5. clone this repo into /root/
+  # 6. clone this repo into /root/
   - git clone https://github.com/erikbergsten/vimrc.git /root/vimrc
-  # 6. install tmux + nvim configs
+  # 7. install tmux + nvim configs
   - mkdir -p /root/.config/tmux /root/.config/nvim
   - ln -sf /root/vimrc/tmux.conf /root/.config/tmux/tmux.conf
   - ln -sf /root/vimrc/init.vim /root/.config/nvim/init.vim
-  # 7. allow ssh agent forwarding and restart sshd
+  # 8. allow ssh agent forwarding and restart sshd
   - sed -i 's/^#\?AllowAgentForwarding.*/AllowAgentForwarding yes/' /etc/ssh/sshd_config
   - systemctl restart ssh
-  # 8. append bashrc (PS1 prompt, PROMPT_COMMAND, r alias, stable ssh-agent socket) to /root/.bashrc
+  # 9. append bashrc (PS1 prompt, PROMPT_COMMAND, r alias, stable ssh-agent socket) to /root/.bashrc
   - cat /root/vimrc/bashrc >> /root/.bashrc

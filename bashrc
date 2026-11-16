@@ -3,6 +3,11 @@ export PROMPT_COMMAND="export PROMPT_COMMAND=echo"
 
 alias r='source ~/.bashrc'
 
+# use nvim as vim when it is installed
+if command -v nvim >/dev/null 2>&1; then
+  alias vim=nvim
+fi
+
 # keep a stable agent socket path so persistent tmux sessions keep working
 # after the original SSH session (and its agent socket) is gone
 # skip when SSH_AUTH_SOCK is already the stable path: re-linking it to itself
